@@ -13,7 +13,7 @@ const ServiceCard = ({ title, description, imgUrl, link }) => {
             <h4>{title}</h4>
             <p>{description}</p>
             <Button href={link} className="button-primary" variant="outlined">
-                Read more <ArrowRightAltIcon />
+                Read more
             </Button>
         </div>
     );

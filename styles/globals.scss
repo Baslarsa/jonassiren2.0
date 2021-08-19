@@ -37,8 +37,9 @@ a {
 }
 p {
     font-family: "Roboto";
+    font-weight: 300;
     font-size: 1rem;
-    line-height: 2rem;
+    line-height: 1.8rem;
     @media screen and (max-width: 1024px) {
         text-align: center;
     }
@@ -75,7 +76,7 @@ h1 {
 h2 {
     font-family: "Jomhuria";
     font-size: 7rem;
-    line-height: 2.5rem;
+    line-height: 2rem;
     @media screen and (max-width: 768px) {
         text-align: center;
         font-size: 5rem;
@@ -83,19 +84,15 @@ h2 {
 }
 h3 {
     font-family: "Roboto";
+    font-weight: 700;
     font-size: 1.5rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     @media screen and (max-width: 1024px) {
-        font-size: 1.3rem;
         text-align: center;
     }
     @media screen and (max-width: 896px) {
-        font-size: 1.1rem;
-        line-height: 1rem;
-    }
-    @media screen and (max-width: 520px) {
-        font-size: 1rem;
-        line-height: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.5rem;
     }
 }
 h4 {
@@ -132,4 +129,103 @@ h5 {
     position: sticky !important;
     bottom: 0 !important;
     left: 0 !important;
+}
+.modal-image:focus-visible {
+    outline: none !important;
+}
+.MuiBackdrop-root {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.gallery-wrap {
+    min-height: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    grid-template-areas:
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "text-main text-main text-main text-main mainImage mainImage mainImage mainImage mainImage"
+        "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3"
+        "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3"
+        "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3"
+        "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3";
+    @media screen and (max-width: 1024px) {
+        min-height: 500px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3"
+            "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3"
+            "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3";
+    }
+    @media screen and (max-width: 760px) {
+        min-height: 300px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "text-main text-main text-main text-main text-main text-main text-main text-main text-main"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage mainImage"
+            "primary1 primary1 primary1 primary2 primary2 primary2 primary3 primary3 primary3";
+    }
+}
+.mainImage {
+    grid-area: mainImage;
+    max-height: 600px;
+    @media screen and (max-width: 760px) {
+        max-height: 400px;
+    }
+}
+.primary3 {
+    grid-area: primary3;
+    max-height: 300px;
+    @media screen and (max-width: 760px) {
+        min-height: 150px;
+    }
+    @media screen and (max-width: 540px) {
+        min-height: 100px;
+    }
+}
+.primary2 {
+    grid-area: primary2;
+    max-height: 300px;
+    @media screen and (max-width: 760px) {
+        min-height: 150px;
+    }
+    @media screen and (max-width: 540px) {
+        min-height: 100px;
+    }
+}
+.primary1 {
+    grid-area: primary1;
+    max-height: 300px;
+    @media screen and (max-width: 760px) {
+        min-height: 150px;
+    }
+    @media screen and (max-width: 540px) {
+        min-height: 100px;
+    }
+}
+.text-main {
+    grid-area: text-main;
 }

@@ -6,6 +6,7 @@ import { request } from "../lib/datocms";
 import Intro from "../components/Intro";
 import Services from "../components/Services";
 import SocialMedia from "../components/SocialMedia";
+import Gallery from "../components/Gallery";
 
 const HOMEPAGE_QUERY = `query NewsQuery {
   sitelogo {
@@ -27,6 +28,13 @@ const HOMEPAGE_QUERY = `query NewsQuery {
     }
     servicesTitle
     servicesDetails
+    gallerySubTitle
+    galleryText
+    galleryTitle
+    galleryImages {
+      url
+      id
+    }
   }
   sitelogo {
     image {
@@ -76,6 +84,12 @@ export default function Home({ data }) {
                     title={data.homepage.servicesTitle}
                     text={data.homepage.servicesDetails}
                     services={data.allServicesCollections}
+                />
+                <Gallery
+                    images={data.homepage.galleryImages}
+                    title={data.homepage.galleryTitle}
+                    subTitle={data.homepage.gallerySubTitle}
+                    text={data.homepage.galleryText}
                 />
                 <Footer />
             </div>

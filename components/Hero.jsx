@@ -13,7 +13,7 @@ const Hero = ({ image, text, logo }) => {
                     <h1>{text.herotext}</h1>
                     <h3>{text.heroparagraph}</h3>
                     <Button className="button-primary" variant="outlined">
-                        What we can do for you <ArrowRightAltIcon />
+                        What we can do for you
                     </Button>
                 </div>
                 <div className="top-0 left-0 right-0 bottom-0 bg-black_trans absolute flex flex-col items-center md:block">
