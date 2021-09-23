@@ -56,7 +56,12 @@ const TextAndImage = ({ title, text, imageUrl, link, reversed }) => {
                     </CustomButton>
                 )}
             </div>
-            <div className="lg:w-1/2 w-full h-100 md:pl-16">
+            <div
+                className={classNames("lg:w-1/2 w-full h-100", {
+                    "md:pl-16": !reversed,
+                    "md:pr-16": reversed,
+                })}
+            >
                 <div className="w-full h-full relative">
                     <Image
                         layout="fill"
