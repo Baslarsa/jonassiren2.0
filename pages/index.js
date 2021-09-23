@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import NavSlider from "../components/NavSlider";
 import { TextAndImageFragment } from "../components/TextAndImage";
 import { HeroFragment } from "../components/Hero";
+import { SmallHeroFragment } from "../components/SmallHero";
 import Footer from "../components/Footer";
 import { request } from "../lib/datocms";
 import { gql } from "graphql-request";
@@ -13,6 +14,7 @@ import htmlForSection from "../lib/htmlForSections";
 
 const PAGE_QUERY = gql`
     ${HeroFragment}
+    ${SmallHeroFragment}
     ${TextAndImageFragment}
     ${TextSectionFragment}
     ${ProductGroupFragment}

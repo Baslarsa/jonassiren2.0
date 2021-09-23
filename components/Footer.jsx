@@ -6,9 +6,12 @@ const Footer = ({ links, contact, logo }) => {
         return (
             <div className="text-center lg:text-left w-full h-full">
                 {linkList.map((list) => (
-                    <ul>
+                    <ul key={list.length}>
                         {[list].map((link) => (
-                            <li className="py-2 font-semibold text-md text-black_trans hover:text-black transition-all lg:pr-8 w-auto">
+                            <li
+                                key={link.label}
+                                className="py-2 font-semibold text-md text-black_trans hover:text-black transition-all lg:pr-8 w-auto"
+                            >
                                 <Link
                                     href={link.externalLink || link.page?.slug}
                                 >
