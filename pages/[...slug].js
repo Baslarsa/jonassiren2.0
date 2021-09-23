@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import NavSlider from "../components/NavSlider";
 import { TextAndImageFragment } from "../components/TextAndImage";
 import { HeroFragment } from "../components/Hero";
 import Footer from "../components/Footer";
@@ -9,10 +8,12 @@ import { TextSectionFragment } from "../components/TextSection";
 import { ProductGroupFragment } from "../components/ProductGroup";
 import { GalleryFragment } from "../components/Gallery";
 import { ContactFormFragment } from "../components/ContactForm";
+import { SmallHeroFragment } from "../components/SmallHero";
 import htmlForSection from "../lib/htmlForSections";
 
 const PAGE_QUERY = gql`
     ${HeroFragment}
+    ${SmallHeroFragment}
     ${TextAndImageFragment}
     ${TextSectionFragment}
     ${ProductGroupFragment}
@@ -99,11 +100,24 @@ const PAGE_QUERY = gql`
         }
     }
 `;
+export async function getStaticPaths() {
+    const data = await request({
+        query: `query Page {
+                    allPages(first: 100, filter: {slug: {neq: null}}) {
+                        slug
+                    }
+                }`,
+    });
+    const paths = data.allPages.map((p) => `/${p.slug}`);
+    return { paths, fallback: "blocking" };
+}
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
     const data = await request({
         query: PAGE_QUERY,
-        variables: { slug: "home" },
+        variables: {
+            slug: params.slug[0],
+        },
     });
     return {
         props: { data },
@@ -111,7 +125,7 @@ export async function getStaticProps() {
 }
 
 const darkMode = true;
-export default function Home({ data }) {
+export default function Page({ data }) {
     return (
         <div className={darkMode ? "dark" : ""}>
             <Header
@@ -119,7 +133,7 @@ export default function Home({ data }) {
                 logoUrl={data.logo.smallImage.url}
             />
             <main className="w-full">
-                {data.page.sections.map((section) => (
+                {data.page?.sections.map((section) => (
                     <div className="w-full" key={section.id}>
                         {htmlForSection(section, data.logo.image.url)}
                     </div>

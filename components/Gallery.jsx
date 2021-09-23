@@ -1,75 +1,57 @@
 import { Button, Modal } from "@material-ui/core";
+import { gql } from "graphql-request";
+import Image from "next/image";
 import Fade from "@material-ui/core/Fade";
 import Backdrop from "@material-ui/core/Backdrop";
 import { useState } from "react";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { useCallback } from "react";
 
-const Gallery = ({ title, subTitle, text, images }) => {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [modalUrl, setModalUrl] = useState(images[0].url);
+export const GalleryFragment = gql`
+    fragment GalleryFragment on GalleryRecord {
+        id
+        title
+        description
+        images {
+            url
+            id
+        }
+    }
+`;
 
-    const handleModal = useCallback((val) => {
-        setModalUrl(images[val].url);
-        setModalOpen(!modalOpen);
-    });
-
+const Gallery = ({ title, text, images }) => {
+    const [displayUrl, setDisplayUrl] = useState(images[0].url);
     return (
-        <div className="gallery-wrap w-full lg:px-16 px-2 text-white text-center lg:text-left">
-            <div className="text-main lg:pt-12 lg:pr-12 lg:pb-12 lg:pl-0 px-4 py-8">
-                <Modal
-                    onClose={() => setModalOpen(false)}
-                    className="flex items-center justify-center"
-                    open={modalOpen}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                    aria-labelledby="Image big in modal"
-                    aria-describedby="A big view of the image in a modal"
-                >
-                    <Fade in={modalOpen}>
-                        <img
-                            src={modalUrl}
-                            className="p-2 md:w-2/3 w-full object-cover modal-image"
+        <div className="max-w-7xl w-full text-white mx-auto px-4 md:px-16 xl:px-0">
+            <div className="text-white py-8">
+                <div className="flex flex-col md:flex-row">
+                    <div className="w-full md:w-1/2 py-4 pr-0 md:pr-8 md:px-0 flex flex-col justify-center">
+                        <h2 className="py-4 text-6xl text-left">{title}</h2>
+                        <p className=" text-left">{text}</p>
+                    </div>
+                    <div className="w-full md:w-1/2 h-96 relative my-8 rounded-md overflow-hidden">
+                        <Image
+                            src={displayUrl}
+                            layout="fill"
+                            className="object-cover rounded-md"
                         />
-                    </Fade>
-                </Modal>
-                <h2 className="py-4">{title}</h2>
-                <h3>{subTitle}</h3>
-                <p className="py-2">{text}</p>
-                <Button
-                    onClick={handleModal}
-                    className="button-primary"
-                    variant="outlined"
-                >
-                    What we can do for you
-                </Button>
-            </div>
-            <div className="mainImage" onClick={() => handleModal(0)}>
-                <img
-                    src={images[0].url}
-                    className="object-cover w-full h-full rounded"
-                />
-            </div>
-            <div className="primary1" onClick={() => handleModal(1)}>
-                <img
-                    src={images[1].url}
-                    className="object-cover w-full h-full rounded"
-                />
-            </div>
-            <div className="primary2" onClick={() => handleModal(2)}>
-                <img
-                    src={images[2].url}
-                    className="object-cover w-full h-full rounded"
-                />
-            </div>
-            <div className="primary3" onClick={() => handleModal(3)}>
-                <img
-                    src={images[3].url}
-                    className="object-cover w-full h-full rounded"
-                />
+                    </div>
+                </div>
+                <div className="w-full grid grid-cols-2 lg:grid-cols-6 gap-6">
+                    {images.map((image) => (
+                        <div
+                            key={image.id}
+                            className="relative cursor-pointer h-40 w-full border-black rounded-md overflow-hidden opacity-1 transition-all hover:opacity-50"
+                            onClick={() => setDisplayUrl(image.url)}
+                        >
+                            <Image
+                                src={image.url}
+                                layout="fill"
+                                className="object-cover"
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
