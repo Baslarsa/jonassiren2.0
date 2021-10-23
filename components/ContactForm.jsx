@@ -19,7 +19,7 @@ export const ContactFormFragment = gql`
 const ContactForm = ({ image, title }) => {
   return (
     <div
-      className={classNames('mx-auto bg-cray py-8 rounded-md my-8', {
+      className={classNames('mx-auto bg-light py-8 rounded-md my-8', {
         'max-w-7xl': image,
         'max-w-3xl': !image,
       })}
@@ -39,7 +39,7 @@ const ContactForm = ({ image, title }) => {
             />
           </div>
         )}
-        <div className="w-full px-8 py-24">
+        <div className="w-full px-8 py-24 bg-white rounded-md">
           <h2 className="text-6xl text-coal">{title}</h2>
           <Formik
             initialValues={{ name: '', email: '', message: '' }}

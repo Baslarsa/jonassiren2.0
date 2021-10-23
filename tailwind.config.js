@@ -17,9 +17,9 @@ module.exports = {
         black_2: 'rgb(10,10,10)',
         black_trans: 'rgba(0,0,0,0.5)',
         gray_1: 'rgba(17,17,17,1)',
-        light: '#f0f0f0',
-        cray: '#dedede',
-        coal: '#1c1c1c',
+        light: '#ecedeb',
+        cray: '#8d8c8a',
+        coal: '#363538',
       },
       height: {
         hero: `calc(100vh - 8rem)`,

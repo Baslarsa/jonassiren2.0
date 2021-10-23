@@ -10,7 +10,8 @@ const Footer = ({ links, contact, logo }) => {
             {[list].map((link) => (
               <li
                 key={link.label}
-                className="py-2 font-semibold text-md text-black_trans hover:text-black transition-all lg:pr-8 w-auto">
+                className="py-2 font-semibold text-md text-black_trans hover:text-black transition-all lg:pr-8 w-auto"
+              >
                 <Link href={link.externalLink || link.page?.slug}>
                   <a>
                     <h4 className="w-auto inline-block md:pr-2 md:pl-0 pr-2 pl-2">
@@ -26,7 +27,7 @@ const Footer = ({ links, contact, logo }) => {
     )
   }
   return (
-    <div className="w-full bg-cray mt-24">
+    <div className="w-full bg-white mt-24">
       <div className="w-full h-full max-w-7xl mx-auto grid lg:grid-cols-2 grid-cols-1 py-16 px-8 md:px-16 xl:px-0">
         <div className="grid grid-cols-1 md:grid-cols-3 w-full pb-8">
           <div>{linkColumns(links.linksColOne)}</div>
@@ -66,4 +67,4 @@ const Footer = ({ links, contact, logo }) => {
   )
 }
 
-export default Footer;
+export default Footer
