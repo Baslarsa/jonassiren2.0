@@ -1,5 +1,5 @@
-import { Button, Drawer } from "@material-ui/core";
-import SocialMedia from "../components/SocialMedia";
+import { Button, Drawer } from '@material-ui/core'
+import SocialMedia from '../components/SocialMedia'
 import Link from "next/link";
 
 const NavSlider = ({ isOpen, onToggle, menuItems }) => {
@@ -11,7 +11,7 @@ const NavSlider = ({ isOpen, onToggle, menuItems }) => {
                 onClose={onToggle}
                 className="drawer"
             >
-                <nav className="bg-gray_1 w-80 h-screen text-white flex flex-col px-16 py-16">
+                <nav className="bg-cray w-80 h-screen text-coal flex flex-col px-16 py-16">
                     {menuItems && (
                         <ul className="h-full w-full flex flex-col justify-center text-right flex-1">
                             {menuItems.map((item) => (

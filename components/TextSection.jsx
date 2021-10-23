@@ -1,5 +1,5 @@
-import { Button } from "@material-ui/core";
-import classNames from "classnames";
+import { Button } from '@material-ui/core'
+import classNames from 'classnames'
 import { gql } from "graphql-request";
 
 export const TextSectionFragment = gql`
@@ -13,7 +13,7 @@ export const TextSectionFragment = gql`
 
 const TextSection = ({ title, text, textAlign }) => {
     return (
-        <div className="text-white max-w-3xl mx-auto my-12">
+        <div className="text-coal max-w-3xl mx-auto my-12">
             <div
                 className={classNames("py-10 w-auto px-8 md:px-16 xl:px-0", {
                     "text-center": textAlign === "Center",

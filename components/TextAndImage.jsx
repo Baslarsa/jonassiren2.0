@@ -1,5 +1,5 @@
-import CustomButton from "./CustomButton";
-import { gql } from "graphql-request";
+import CustomButton from './CustomButton'
+import { gql } from 'graphql-request'
 import Image from "next/image";
 import classNames from "classnames";
 
@@ -34,7 +34,7 @@ const TextAndImage = ({ title, text, imageUrl, link, reversed }) => {
         >
             <div
                 className={classNames(
-                    "py-10 lg:w-1/2 w-full text-center my-auto text-white",
+                    "py-10 lg:w-1/2 w-full text-center my-auto text-coal",
                     {
                         "md:text-right md:pl-8": reversed,
                         "md:text-left md:pr-8": !reversed,

@@ -1,5 +1,5 @@
-import CloseIcon from "@material-ui/icons/Close";
-import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from '@material-ui/icons/Close'
+import MenuIcon from '@material-ui/icons/Menu'
 import { useEffect, useState } from "react";
 import NavSlider from "./NavSlider";
 import Image from "next/image";
@@ -29,7 +29,7 @@ const Header = ({ links, logoUrl }) => {
     return (
         <div
             style={{ height: "4rem" }}
-            className="flex bg-black_2 justify-center fixed top-0 left-0 right-0 z-50"
+            className="flex bg-light justify-center fixed top-0 left-0 right-0 z-50"
         >
             <div className="nav-inner w-full flex items-center justify-between px-2 sm:px-12 md:px-14 lg:px-14 xl:px-0 max-w-7xl">
                 <Link href="/">
@@ -47,7 +47,7 @@ const Header = ({ links, logoUrl }) => {
                     </a>
                 </Link>
                 <div
-                    className="flex items-center transition-all text-white hover:text-main"
+                    className="flex items-center transition-all text-coal hover:text-main"
                     onClick={toggleNav}
                 >
                     <h5

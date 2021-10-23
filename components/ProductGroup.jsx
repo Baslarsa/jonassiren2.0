@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
-import Image from "next/image";
-import CustomButton from "./CustomButton";
+import { gql } from 'graphql-request'
+import Image from 'next/image'
+import CustomButton from './CustomButton'
 import Link from "next/link";
 export const ProductGroupFragment = gql`
     fragment ProductGroupFragment on ProductGroupRecord {
@@ -23,7 +23,7 @@ export const ProductGroupFragment = gql`
 const ProductCard = ({ title, description, imgUrl, link }) => {
     return (
         <Link href={link}>
-            <div className="text-white bg-gray_1 cursor-pointer w-full flex flex-col items-center p-4 text-center bg-gray rounded-md">
+            <div className="text-coal bg-cray cursor-pointer w-full flex flex-col items-center p-4 text-center bg-gray rounded-md">
                 <div className="h-thumb w-full relative mb-2 rounded overflow-hidden">
                     <Image
                         src={imgUrl}
@@ -44,10 +44,10 @@ const ProductCard = ({ title, description, imgUrl, link }) => {
 const ProductGroup = ({ products, title }) => {
     return (
         <div className="max-w-7xl mx-auto lg:px-16 xl:px-0">
-            <div className="text-center text-white w-full">
+            <div className="text-center text-coal w-full">
                 {title && <h2 className="mb-4 text-7xl">{title}</h2>}
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 text-center text-white w-full">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 text-center text-coal w-full">
                 {products.map((product) => (
                     <ProductCard
                         key={product.id}

@@ -1,5 +1,5 @@
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
+import FacebookIcon from '@material-ui/icons/Facebook'
+import InstagramIcon from '@material-ui/icons/Instagram'
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import classNames from "classnames";
 
@@ -12,13 +12,13 @@ const SocialMedia = ({ className }) => {
             )}
         >
             <div className="p-1">
-                <FacebookIcon style={{ fill: "white" }} />
+                <FacebookIcon className="fill-current text-coal" />
             </div>
             <div className="p-1">
-                <InstagramIcon style={{ fill: "white" }} />
+                <InstagramIcon className="fill-current text-coal" />
             </div>
             <div className="p-1">
-                <YouTubeIcon style={{ fill: "white" }} />
+                <YouTubeIcon className="fill-current text-coal" />
             </div>
         </div>
     );
