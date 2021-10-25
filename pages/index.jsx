@@ -1,15 +1,16 @@
-import Header from "../components/Header";
-import { TextAndImageFragment } from "../components/TextAndImage";
-import { HeroFragment } from "../components/Hero";
-import { SmallHeroFragment } from "../components/SmallHero";
-import Footer from "../components/Footer";
-import { request } from "../lib/datocms";
-import { gql } from "graphql-request";
-import { TextSectionFragment } from "../components/TextSection";
-import { ProductGroupFragment } from "../components/ProductGroup";
-import { GalleryFragment } from "../components/Gallery";
-import { ContactFormFragment } from "../components/ContactForm";
-import htmlForSection from "../lib/htmlForSections";
+import Header from '../components/Header'
+import { TextAndImageFragment } from '../components/TextAndImage'
+import { HeroFragment } from '../components/Hero'
+import { SmallHeroFragment } from '../components/SmallHero'
+import Footer from '../components/Footer'
+import { request } from '../lib/datocms'
+import { gql } from 'graphql-request'
+import { TextSectionFragment } from '../components/TextSection'
+import { ProductGroupFragment } from '../components/ProductGroup'
+import { GalleryFragment } from '../components/Gallery'
+import { ContactFormFragment } from '../components/ContactForm'
+import htmlForSection from '../lib/htmlForSections'
+import { ImageGridFragment } from '../components/ImageGrid'
 
 const PAGE_QUERY = gql`
   ${HeroFragment}
@@ -19,6 +20,7 @@ const PAGE_QUERY = gql`
   ${ProductGroupFragment}
   ${GalleryFragment}
   ${ContactFormFragment}
+  ${ImageGridFragment}
 
   query Page($slug: String!) {
     page(filter: { slug: { eq: $slug } }) {
@@ -46,6 +48,9 @@ const PAGE_QUERY = gql`
         }
         ... on ContactFormRecord {
           ...ContactFormFragment
+        }
+        ... on ImageGridRecord {
+          ...ImageGridFragment
         }
       }
     }
@@ -99,16 +104,16 @@ const PAGE_QUERY = gql`
       email
     }
   }
-`;
+`
 
 export async function getStaticProps() {
   const data = await request({
     query: PAGE_QUERY,
-    variables: { slug: "home" },
-  });
+    variables: { slug: 'home' },
+  })
   return {
     props: { data },
-  };
+  }
 }
 
 export default function Home({ data }) {
@@ -128,5 +133,5 @@ export default function Home({ data }) {
         logo={data.logo.smallImage.url}
       />
     </div>
-  );
+  )
 }
