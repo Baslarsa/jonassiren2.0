@@ -1,7 +1,7 @@
-import CustomButton from './CustomButton'
+import classNames from 'classnames'
 import { gql } from 'graphql-request'
 import Image from 'next/image'
-import classNames from 'classnames'
+import CustomButton from './CustomButton'
 
 export const TextAndImageFragment = gql`
   fragment TextAndImageFragment on TextAndImageRecord {
@@ -26,7 +26,7 @@ const TextAndImage = ({ title, text, imageUrl, link, reversed }) => {
   return (
     <div
       className={classNames(
-        'flex flex-col md:flex-row max-w-7xl mx-auto mt-6 px-8 md:px-16 xl:px-0 py-8',
+        'flex flex-col md:flex-row max-w-7xl mx-auto mt-6 px-4 md:px-16 xl:px-0 py-8',
         {
           'md:flex-row-reverse': reversed,
         },
@@ -41,9 +41,9 @@ const TextAndImage = ({ title, text, imageUrl, link, reversed }) => {
           },
         )}
       >
-        <h2 className="md:w-full text-6xl">{title}</h2>
+        <h2 className="md:w-full text-4xl md:text-6xl">{title}</h2>
         <p
-          className={classNames('text-xl text-center', {
+          className={classNames('text-center', {
             'md:text-left': !reversed,
             'md:text-right': reversed,
           })}

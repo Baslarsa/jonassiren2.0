@@ -1,6 +1,6 @@
-import { Button, Drawer } from '@material-ui/core'
-import SocialMedia from '../components/SocialMedia'
+import { Drawer } from '@material-ui/core'
 import Link from 'next/link'
+import SocialMedia from '../components/SocialMedia'
 
 const NavSlider = ({ isOpen, onToggle, menuItems }) => {
   return (

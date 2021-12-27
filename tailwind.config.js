@@ -20,6 +20,7 @@ module.exports = {
         light: '#ecedeb',
         cray: '#8d8c8a',
         coal: '#363538',
+        spotify: '#1DB954',
       },
       height: {
         hero: `calc(100vh - 8rem)`,

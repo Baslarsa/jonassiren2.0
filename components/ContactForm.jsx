@@ -1,10 +1,9 @@
+import axios from 'axios'
 import classNames from 'classnames'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { gql } from 'graphql-request'
 import Image from 'next/image'
 import CustomButton from './CustomButton'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useState } from 'react'
-import axios from 'axios'
 
 export const ContactFormFragment = gql`
   fragment ContactFormFragment on ContactFormRecord {
@@ -40,7 +39,7 @@ const ContactForm = ({ image, title }) => {
           </div>
         )}
         <div className="w-full px-8 py-24 bg-white rounded-md">
-          <h2 className="text-6xl text-coal">{title}</h2>
+          <h2 className="text-5xl md:text-6xl text-coal">{title}</h2>
           <Formik
             initialValues={{ name: '', email: '', message: '' }}
             validate={(values) => {
@@ -60,9 +59,9 @@ const ContactForm = ({ image, title }) => {
               }
               return errors
             }}
-            onSubmit={async (values, { setSubmitting }) => {
+            onSubmit={async (values) => {
               try {
-                const response = await axios.post('/api/mail', {
+                await axios.post('/api/mail', {
                   name: values.name,
                   email: values.email,
                   message: values.message,

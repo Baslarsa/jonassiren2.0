@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import SpotifyLogo from '../svg/SpotifyLogo'
 
 export const ImageGridFragment = gql`
@@ -29,7 +29,7 @@ export const LinkCard = ({ image, link, title }) => {
         <Image src={image.url} width={400} height={400} />
         <div className="hover:bg-black bg-transparent transition-all opacity-0 hover:opacity-80 absolute inset-0 text-white flex flex-col justify-center items-center p-4 text-center">
           <p>{title}</p>
-          <SpotifyLogo className="fill-current text-green-400 w-10 h-10 my-4" />
+          <SpotifyLogo className="fill-current text-spotify w-10 h-10 my-4" />
         </div>
       </a>
     </Link>
@@ -44,6 +44,7 @@ const ImageGrid = ({ items }) => {
           image={item.image}
           link={item.link[0].externalLink || item.link[0].page?.slug}
           title={item.link[0].label}
+          key={item.link[0].externalLink || item.link[0].page?.slug}
         />
       ))}
     </div>

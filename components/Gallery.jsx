@@ -1,11 +1,6 @@
-import { Button, Modal } from '@material-ui/core'
 import { gql } from 'graphql-request'
 import Image from 'next/image'
-import Fade from '@material-ui/core/Fade'
-import Backdrop from '@material-ui/core/Backdrop'
 import { useState } from 'react'
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
-import { useCallback } from 'react'
 
 export const GalleryFragment = gql`
   fragment GalleryFragment on GalleryRecord {
@@ -27,8 +22,8 @@ const Gallery = ({ title, text, images }) => {
         <div className="py-8">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/2 py-4 pr-0 md:pr-8 md:px-0 flex flex-col justify-center">
-              <h2 className="py-4 text-6xl text-left">{title}</h2>
-              <p className=" text-left">{text}</p>
+              <h2 className="py-4 text-5xl md:text-6xl text-left">{title}</h2>
+              <p className="text-left">{text}</p>
             </div>
             <div className="w-full md:w-1/2 h-96 relative my-8 rounded-md overflow-hidden">
               <Image

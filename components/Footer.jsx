@@ -1,38 +1,42 @@
 import Link from 'next/link'
 import Logo from './Logo'
+import FacebookIcon from '../svg/FacebookIcon'
+import InstagramIcon from '../svg/InstagramIcon'
+
+const linkColumns = (linkList, title) => {
+  return (
+    <div className="text-center lg:text-left w-full h-full">
+      <p className="font-semibold">{title}</p>
+      {linkList.map((list) => (
+        <ul key={list.length}>
+          {[list].map((link) => (
+            <li
+              key={link.label}
+              className="py-2 font-semibold text-md text-black_trans hover:text-main transition-all lg:pr-8 w-auto"
+            >
+              <Link href={link.externalLink || link.page?.slug}>
+                <a>
+                  <h4 className="w-auto inline-block md:pr-2 md:pl-0 pr-2 pl-2">
+                    {link.label}
+                  </h4>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  )
+}
 
 const Footer = ({ links, contact, logo }) => {
-  const linkColumns = (linkList) => {
-    return (
-      <div className="text-center lg:text-left w-full h-full">
-        {linkList.map((list) => (
-          <ul key={list.length}>
-            {[list].map((link) => (
-              <li
-                key={link.label}
-                className="py-2 font-semibold text-md text-black_trans hover:text-black transition-all lg:pr-8 w-auto"
-              >
-                <Link href={link.externalLink || link.page?.slug}>
-                  <a>
-                    <h4 className="w-auto inline-block md:pr-2 md:pl-0 pr-2 pl-2">
-                      {link.label}
-                    </h4>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
-    )
-  }
   return (
     <div className="w-full bg-white mt-24">
-      <div className="w-full h-full max-w-7xl mx-auto grid lg:grid-cols-2 grid-cols-1 py-16 px-8 md:px-16 xl:px-0">
+      <div className="w-full h-full max-w-7xl mx-auto grid lg:grid-cols-2 grid-cols-1 pt-16 px-8 md:px-16 xl:px-0">
         <div className="grid grid-cols-1 md:grid-cols-3 w-full pb-8">
-          <div>{linkColumns(links.linksColOne)}</div>
-          <div>{linkColumns(links.linksColTwo)}</div>
-          <div>{linkColumns(links.linksColThree)}</div>
+          <div>{linkColumns(links.linksColOne, 'Site')}</div>
+          <div>{linkColumns(links.linksColTwo, 'Services')}</div>
+          <div>{linkColumns(links.linksColThree, 'About us')}</div>
         </div>
         <div>
           <ul className="text-center lg:text-right flex flex-col items-center lg:items-end">
@@ -57,10 +61,21 @@ const Footer = ({ links, contact, logo }) => {
           </ul>
         </div>
       </div>
-      <div className="w-full bg-coal mx-auto text-white flex justify-center py-1">
+      <div className="flex justify-center items-center md:items-start flex-col text-4xl py-6 max-w-7xl w-full mx-auto text-coal">
+        <h2>Follow us</h2>
+        <div className="flex">
+          <a href="https://www.facebook.com/sirensoundfactory">
+            <FacebookIcon className="fill-current text-coal w-10 h-10 mx-2" />
+          </a>
+          <a href="https://www.instagram.com/sirensoundfactory/">
+            <InstagramIcon className="fill-current text-coal w-10 h-10 mx-2" />
+          </a>
+        </div>
+      </div>
+      <div className="w-full text-sm bg-black mx-auto text-white flex justify-center py-1">
         <small>
-          All rights reserved © - AB Siren Soundfactory Oy 2021 - Website by
-          David Larsson
+          All rights reserved © - AB Siren Sound Factory Oy{' '}
+          {new Date().getFullYear()}
         </small>
       </div>
     </div>

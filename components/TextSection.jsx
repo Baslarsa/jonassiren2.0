@@ -1,4 +1,3 @@
-import { Button } from '@material-ui/core'
 import classNames from 'classnames'
 import { gql } from 'graphql-request'
 
@@ -22,9 +21,9 @@ const TextSection = ({ title, text, textAlign }) => {
             'text-right': textAlign === 'Right',
           })}
         >
-          <h2 className="md:w-full text-6xl">{title}</h2>
+          <h2 className="md:w-full text-4xl md:text-6xl">{title}</h2>
           <p
-            className={classNames('text-lg', {
+            className={classNames('', {
               'text-center': textAlign === 'Center',
               'text-left': textAlign === 'Left',
               'text-right': textAlign === 'Right',

@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request'
 import Image from 'next/image'
-import CustomButton from './CustomButton'
 import Link from 'next/link'
+import CustomButton from './CustomButton'
 export const ProductGroupFragment = gql`
   fragment ProductGroupFragment on ProductGroupRecord {
     id
