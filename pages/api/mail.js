@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
   const emailProperties = {
     from: `${name}<${process.env.EMAIL_USER}>`,
-    to: 'davvelars@hotmail.com',
+    to: process.env.EMAIL_RECEIVER,
     subject: 'New message from website',
     text: message,
     replyTo: email,

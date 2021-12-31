@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import Logo from './Logo'
-import FacebookIcon from '../svg/FacebookIcon'
-import InstagramIcon from '../svg/InstagramIcon'
+import SocialMedia from './SocialMedia'
 
 const linkColumns = (linkList, title) => {
   return (
     <div className="text-center lg:text-left w-full h-full">
       <p className="font-semibold">{title}</p>
-      {linkList.map((list) => (
-        <ul key={list.length}>
+      {linkList.map((list, i) => (
+        <ul key={`footer--link--${list.label}--${i}`}>
           {[list].map((link) => (
             <li
               key={link.label}
@@ -62,14 +61,8 @@ const Footer = ({ links, contact, logo }) => {
         </div>
       </div>
       <div className="flex justify-center items-center md:items-start flex-col text-4xl py-6 max-w-7xl w-full mx-auto text-coal">
-        <h2>Follow us</h2>
         <div className="flex">
-          <a href="https://www.facebook.com/sirensoundfactory">
-            <FacebookIcon className="fill-current text-coal w-10 h-10 mx-2" />
-          </a>
-          <a href="https://www.instagram.com/sirensoundfactory/">
-            <InstagramIcon className="fill-current text-coal w-10 h-10 mx-2" />
-          </a>
+          <SocialMedia />
         </div>
       </div>
       <div className="w-full text-sm bg-black mx-auto text-white flex justify-center py-1">

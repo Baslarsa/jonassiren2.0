@@ -32,7 +32,7 @@ const Header = ({ links, logoUrl }) => {
           <a className="h-full">
             <div
               className={classNames(
-                'h-full py-5 relative opacity-0 transition-all',
+                'h-full py-5 relative md:opacity-100 transition-all',
                 {
                   'opacity-100': showHeaderLogo,
                 },

@@ -11,6 +11,7 @@ import { ContactFormFragment } from '../components/ContactForm'
 import { SmallHeroFragment } from '../components/SmallHero'
 import htmlForSection from '../lib/htmlForSections'
 import { ImageGridFragment } from '../components/ImageGrid'
+import { renderMetaTags } from 'react-datocms'
 
 const PAGE_QUERY = gql`
   ${HeroFragment}
@@ -23,9 +24,21 @@ const PAGE_QUERY = gql`
   ${ImageGridFragment}
 
   query Page($slug: String!) {
+    site: _site {
+      favicon: faviconMetaTags {
+        attributes
+        content
+        tag
+      }
+    }
     page(filter: { slug: { eq: $slug } }) {
       title
       slug
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
       sections {
         __typename
         ... on TextAndImageRecord {
@@ -134,6 +147,7 @@ export default function Page({ data }) {
   return (
     <div className={darkMode ? 'dark' : ''}>
       <Header links={data.menu.links} logoUrl={data.logo.smallImage.url} />
+      <Head>{renderMetaTags(data.page.seo.concat(data.site.favicon))}</Head>
       <main className="w-full">
         {data.page?.sections.map((section) => (
           <div className="w-full" key={section.id}>
