@@ -34,7 +34,6 @@ export default async function handler(req, res) {
     await transporter.sendMail(emailProperties)
     res.status(200).json({ message: 'Email has been sent' })
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error })
   }
 }

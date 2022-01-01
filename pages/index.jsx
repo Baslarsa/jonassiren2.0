@@ -131,7 +131,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  console.log(data)
   return (
     <div>
       <Header links={data.menu.links} logoUrl={data.logo.smallImage.url} />

@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import Head from 'next/head'
 import { TextAndImageFragment } from '../components/TextAndImage'
 import { HeroFragment } from '../components/Hero'
 import Footer from '../components/Footer'
